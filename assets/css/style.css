@@ -40,3 +40,15 @@ header{
     text-decoration: none;
     transition: all 0.5s ease-out;
 }
+@media (max-width:750px) {
+    header{
+        padding: 0 8px;
+        height: 35px;
+    }
+    .linkHeader, .otherLinks{
+        gap: 8px;
+    }
+    .linkHeader a, .otherLinks a{
+        font-size: 1em;
+    }
+}
