@@ -16,13 +16,52 @@ a{
 }
 /* ============HEADER============ */
 header{
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     padding: 0 150px;
+}
+.headerTop{
+    height: 40px;
+    background-color: #F9F9F9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+.headerTop a{
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.5s;
+    color: #7c7a7a;
+}
+.headerTop a:hover{
+    color: #000;
+}
+.linkBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 8px;
+    transition: 0.5s;
+}
+.linkBar a{
+    font-size: 18px;
+}
+.headerBottom{
+    margin-top: 35px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 150px;
     position: fixed;
     width: 100%;
+    background-color:#272626;
 }
 .logo {
     display: flex;
@@ -47,20 +86,143 @@ header{
     text-decoration: none;
     padding: 5px;
     border-radius: 10px;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
+    color: #F9F9F9;
 }
 .navbar a:hover{
+    border-bottom: #f9f9f9 solid 2px;
+} 
+.active{
+    border-bottom: #f9f9f9 solid 2px;
+}
+.boutonMenu {
+    padding: 8px 10px;
+    border: none;
     background-color: #d2691e;
     color: #F9F9F9;
-} 
-@media (max-width:750px) {
-    header{
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    display: none;
+}
+.boutonMenu:hover{
+    transform: translateY(-5%);
+}
+@media (max-width:850px) {
+    .headerBottom{
         padding: 0 8px;
-        height: 35px;
     }
-    .otherLinks a{
-        font-size: 1em;
+    .navbar2 li{
+        border-bottom: #808080 solid 1px;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .boutonMenu{
+        display: block;
+    }
+    .navbar {
+        display: none;
+    }
+    .navbar2{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        margin-top: 500px;
+        width: 300px;
+        align-items: start;
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 30px;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em;
     }
 }
 
 /* =============HER0=============== */
+.hero{
+    height: 600px;
+    background: linear-gradient(90deg,#676363,#525050);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 150px;
+}
+.presentation{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 100px;
+    height: 500px;
+    justify-content: center;
+
+}
+.presentation h1{
+    font-size: 3.5em;
+    width: 20ch;
+    color: #000;
+    font-weight: bolder;
+}
+@keyframes typing {
+    from{
+        width: 0ch;
+    } 
+}
+.presentation p{
+    font-size: 20px;
+    width: 450px;
+    color: #2c2a2a;
+    animation: typing 2s steps(30) infinite;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+.presentation a{
+    text-decoration: none;
+    width: 200px;
+    padding: 10px 15px;
+    /* background-color: #F9F9F9; */
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 100px;
+    border-bottom: solid 3px #f9f9f9;
+    border-top: solid 3px #f9f9f9;
+    color: #f9f9f9;
+    transition: 0.5s ease-in;
+}
+.presentation a:hover{
+    border: none;
+    box-shadow: #f9f9f9 0px 5px 15px;
+}
+.img{
+    margin-top: 90px;
+    height: 500px;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 600px;
+    padding-top: 100px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    /* z-index: 0; */
+    animation: animation 12s infinite alternate;
+}
+@keyframes animation {
+    0%{
+        background-image: url("../../images/1.png");
+    }
+    25%{
+        background-image: url("../../images/2.png");
+    }
+    50%{
+        background-image: url("../../images/3.png");
+    }
+    75%{
+        background-image: url("../../images/4.png");
+    }
+    100%{
+        background-image: url("../../images/5.png");
+    }
+}
