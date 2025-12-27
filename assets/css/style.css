@@ -207,7 +207,7 @@ header{
     background-size: cover;
     background-position: center;
     /* z-index: 0; */
-    animation: animation 12s infinite alternate;
+    animation: animation 6s infinite alternate;
 }
 @keyframes animation {
     0%{
@@ -225,4 +225,100 @@ header{
     100%{
         background-image: url("../../images/5.png");
     }
+}
+
+/* ======================cardBox=================== */
+.cardBox{
+    height: 300px;
+    width: 100%;
+    padding: 50px 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+.card{
+    height: 150px;
+    width: 300px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    cursor: pointer;
+
+    background-size: cover;
+    background-position: center;
+
+    transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+}
+
+/* Overlay sombre */
+.card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.2)
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Texte */
+.card p{
+    position: relative;
+    color: #F9F9F9;
+    font-size: 1.2em;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease, font-size 0.5s ease;
+    z-index: 2;
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* HOVER CARD */
+.card:hover{
+    transform: scale(1.07);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
+}
+
+.card:hover::before{
+    opacity: 1;
+}
+
+.card:hover p{
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 1.3em;
+}
+
+/* Effet focus : les autres cards s’atténuent */
+.cardBox:hover .card{
+    opacity: 0.4;
+}
+
+.cardBox .card:hover{
+    opacity: 1;
+}
+.one{
+    background-image: url("../../images/6.png");
+}
+.two{
+    background-image: url("../../images/7.png");
+}
+.three{
+    background-image: url("../../images/8.png");
+}
+.four{
+    background-image: url("../../images/9.png");
 }
