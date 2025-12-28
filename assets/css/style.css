@@ -68,6 +68,7 @@ header{
     background-color:transparent;
     transition: all 0.4s ease; 
     z-index: 1000;
+    background-color: #1A2B48;
 }
 .logo {
     display: flex;
@@ -104,13 +105,13 @@ header{
 .boutonMenu {
     padding: 8px 10px;
     border: none;
-    background-color: #d2691e;
     color: #F9F9F9;
     font-size: 1.2em;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.5s;
     display: none;
+    background-color: transparent;
 }
 .boutonMenu:hover{
     transform: translateY(-5%);
@@ -130,20 +131,40 @@ header{
     .navbar {
         display: none;
     }
-    .navbar2{
-        position: absolute;
+    .navbar2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(135deg, #1A2B48, #2C3E50);
+        color: #F9F9F9;
         display: flex;
         flex-direction: column;
-        height: 400px;
-        margin-top: 500px;
-        width: 300px;
-        align-items: start;
-        padding-left: 30px;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-bottom: 30px;
-        border-radius: 20px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em;
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 2000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    }
+    .navbar2.active {
+        transform: translateX(0);
+    }
+    .navbar2 li {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #555;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+    .navbar2 a {
+        color: #F9F9F9;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    .navbar2 a:hover {
+        color: #d2691e;
     }
 }
 
@@ -530,6 +551,154 @@ header{
     .prodCard img {
         height: 200px;
     }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .offre-container h2 {
+        font-size: 2em;
+    }
+    .offre-container p {
+        font-size: 1em;
+    }
+    .btn-offre {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+/* ================== OFFRE SPECIALE ================== */
+.offre-speciale {
+    background-image: url(../../images/6.png);
+    background-size: cover;
+    background-position: center;
+    color: #F9F9F9;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.offre-container h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.offre-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.echeance {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.btn-offre {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #1A2B48;
+    color: #F9F9F9;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.btn-offre:hover {
+    background-color: #2C3E50;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* ================== FOOTER ================== */
+footer {
+    background: linear-gradient(135deg, #1A2B48, #2C3E50);
+    color: #F9F9F9;
+    padding: 40px 0 20px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #d2691e;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #F9F9F9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #d2691e;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #F9F9F9;
+    font-size: 1.5em;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d2691e;
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9em;
 }
 .voirPlus{
     display: inline-block;
@@ -579,4 +748,7 @@ header{
 }
 .navbar2{
     display: none;
+}
+.navbar2.active {
+    display: flex;
 }
