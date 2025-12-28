@@ -8,6 +8,10 @@ body{
     background-color: #F9F9F9;
     color: #333;
 }
+.navbar2 {
+    display: none;
+}
+
 li {
     list-style: none;
 }
@@ -59,9 +63,11 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 15px 150px;
-    position: fixed;
+    position: absolute;
     width: 100%;
-    background-color:#272626;
+    background-color:transparent;
+    transition: all 0.4s ease; 
+    z-index: 1000;
 }
 .logo {
     display: flex;
@@ -144,7 +150,8 @@ header{
 /* =============HER0=============== */
 .hero{
     height: 600px;
-    background: linear-gradient(90deg,#676363,#525050);
+    /* background: linear-gradient(90deg,rgb(133, 59, 6),rgb(195, 84, 5)); */
+    background-color: #1A2B48;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -162,7 +169,7 @@ header{
 .presentation h1{
     font-size: 3.5em;
     width: 20ch;
-    color: #000;
+    color: #F9F9F9;
     font-weight: bolder;
 }
 @keyframes typing {
@@ -173,7 +180,8 @@ header{
 .presentation p{
     font-size: 20px;
     width: 450px;
-    color: #2c2a2a;
+    color: #F9F9F9;
+    opacity: 0.8;
     animation: typing 2s steps(30) infinite;
     text-wrap: nowrap;
     overflow: hidden;
@@ -310,15 +318,265 @@ header{
 .cardBox .card:hover{
     opacity: 1;
 }
-.one{
-    background-image: url("../../images/6.png");
+.one{background-image: url("../../images/6.png");}
+.two{background-image: url("../../images/7.png");}
+.three{background-image: url("../../images/8.png");}
+.four{background-image: url("../../images/9.png");}
+
+.headerBottom.changeBG{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    background-color: #1A2B48;
+    height: 80px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
-.two{
-    background-image: url("../../images/7.png");
+/* ================== CATALOGUE ================== */
+.catalogue{
+    padding: 80px 150px;
+    background-color: #F9F9F9;
 }
-.three{
-    background-image: url("../../images/8.png");
+
+.catalogue h1{
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
 }
-.four{
-    background-image: url("../../images/9.png");
+
+.catalogue h1::after{
+    content: "";
+    width: 80px;
+    height: 4px;
+    background-color: #d2691e;
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
+/* ================== PRODUITS GRID ================== */
+.prod{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* ================== CARD ================== */
+.prodCard{
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 15px;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Image */
+.prodCard img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Hover image */
+.prodCard:hover img{
+    transform: scale(1.1);
+}
+
+/* Hover card */
+.prodCard:hover{
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 30px;
+}
+
+/* ================== BOUTON ================== */
+#BtnCommander{
+    width: 80%;
+    margin: 20px auto 25px;
+    display: block;
+
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+
+    background-color: #272626;
+    color: #F9F9F9;
+    font-size: 1em;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* Hover bouton */
+#BtnCommander:hover{
+    background-color: #d2691e;
+    transform: scale(1.05);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1200px) {
+    header {
+        padding: 0 50px;
+    }
+    .headerBottom {
+        padding: 15px 50px;
+    }
+    .hero {
+        padding: 0 50px;
+    }
+    .cardBox {
+        padding: 50px 50px;
+    }
+    .catalogue {
+        padding: 80px 50px;
+    }
+}
+
+@media (max-width: 850px) {
+    header {
+        padding: 0 20px;
+    }
+    .headerBottom {
+        padding: 15px 20px;
+    }
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 150px 20px;
+        text-align: center;
+    }
+    .presentation {
+        margin-top: 0;
+        align-items: center;
+        height: auto;
+    }
+    .presentation h1 {
+        font-size: 2.5em;
+        width: auto;
+    }
+    .presentation p {
+        width: auto;
+        font-size: 18px;
+    }
+    .presentation a {
+        margin-top: 50px;
+    }
+    .img {
+        margin-top: 20px;
+        height: 300px;
+        width: 100%;
+        max-width: 400px;
+    }
+    .cardBox {
+        flex-direction: column;
+        padding: 50px 20px;
+        height: auto;
+        gap: 20px;
+    }
+    .card {
+        width: 100%;
+        height: 200px;
+    }
+    .catalogue {
+        padding: 50px 20px;
+    }
+    .prod {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalogue {
+        padding: 50px 20px;
+    }
+    .prodCard img {
+        height: 230px;
+    }
+    .prod {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .hero{
+        margin-top: 80px;
+    }
+    .presentation h1 {
+        font-size: 2em;
+    }
+    .presentation p {
+        font-size: 16px;
+    }
+    .presentation a {
+        width: 150px;
+        font-size: 18px;
+    }
+    .img {
+        height: 250px;
+        max-width: 300px;
+    }
+    .card {
+        height: 150px;
+    }
+    .prod {
+        grid-template-columns: 1fr;
+    }
+    .prodCard img {
+        height: 200px;
+    }
+}
+.voirPlus{
+    display: inline-block;
+    margin: 40px auto 0;
+    padding: 14px 35px;
+
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+
+    color: #F9F9F9;
+    background: linear-gradient(135deg, #272626, #444);
+
+    border-radius: 40px;
+    letter-spacing: 1px;
+
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet lumière */
+.voirPlus::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+/* Hover */
+.voirPlus:hover{
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 25px;
+}
+
+.voirPlus:hover::before{
+    left: 100%;
+}
+.navbar2{
+    display: none;
 }
