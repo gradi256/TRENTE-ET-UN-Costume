@@ -456,7 +456,7 @@ header{
         padding: 50px 50px;
     }
     .catalogue {
-        padding: 80px 50px;
+        padding: 130px 50px;
     }
 }
 
@@ -506,7 +506,7 @@ header{
         height: 200px;
     }
     .catalogue {
-        padding: 50px 20px;
+        padding: 130px 20px;
     }
     .prod {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -516,7 +516,7 @@ header{
 
 @media (max-width: 768px) {
     .catalogue {
-        padding: 50px 20px;
+        padding: 130px 20px;
     }
     .prodCard img {
         height: 230px;
@@ -877,7 +877,7 @@ footer a{
 /* ================== RESPONSIVE CONTACT ================== */
 @media (max-width: 768px) {
     .contact {
-        padding: 40px 20px;
+        padding: 130px 20px;
     }
 
     .contact-container {
@@ -979,7 +979,7 @@ footer a{
 /* ================== RESPONSIVE ABOUT ================== */
 @media (max-width: 768px) {
     .about {
-        padding: 40px 20px;
+        padding: 130px 20px;
     }
 
     .about-container {
