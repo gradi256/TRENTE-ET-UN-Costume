@@ -30,4 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappUrl, '_blank');
         });
     });
+
+    // Gestion du formulaire de contact
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Récupération des valeurs
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Validation simple
+            if (!name || !email || !subject || !message) {
+                alert('Veuillez remplir tous les champs.');
+                return;
+            }
+
+            // Construction du message WhatsApp
+            const whatsappMessage = `👤 Bonjour, je m'appelle ${name}.\n📧 Email: ${email}\n📌 Sujet: ${subject}\n💬 Message: ${message}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/243818295660?text=${encodedMessage}`;
+
+            // Alerte et redirection
+            alert('Redirection vers WhatsApp...');
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 });
