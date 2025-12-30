@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Vente - TRENTE ET UN COSTUME</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 30px;
+        }
+
+        /* Grille responsive pour les produits */
+        .catalogue {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Carte produit */
+        .prodCard {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .prodCard:hover {
+            transform: translateY(-5px);
+        }
+
+        .prodCard img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .prodCard h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .prodCard p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Message d'accès refusé */
+        #access-denied {
+            display: none;
+            text-align: center;
+            color: #d9534f;
+            font-size: 24px;
+            margin-top: 50px;
+        }
+
+        /* Masquer le catalogue par défaut */
+        #catalogue {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="access-denied">
+        <h1>Accès refusé</h1>
+        <p>Mot de passe incorrect. Veuillez contacter l'administrateur.</p>
+    </div>
+
+    <div id="catalogue">
+        <h1>Panel Vente - Catalogue Interne</h1>
+        <div class="catalogue" id="product-grid">
+            <!-- Les cartes seront générées par JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Mot de passe
+        const PASSWORD = "vente31";
+
+        // Tableau des produits
+        const products = [
+            { ref: "COST-001", name: "Costume Classique Noir", img: "1.jpg" },
+            { ref: "COST-002", name: "Costume Bleu Marine", img: "2.jpg" },
+            { ref: "COST-003", name: "Costume Gris Anthracite", img: "3.jpg" },
+            { ref: "COST-004", name: "Costume Brun Chocolat", img: "4.jpg" },
+            { ref: "COST-005", name: "Costume Blanc", img: "5.jpg" },
+            { ref: "COST-006", name: "Costume Noir Slim", img: "6.jpg" },
+            { ref: "COST-007", name: "Costume Bleu Slim", img: "7.jpg" },
+            { ref: "COST-008", name: "Costume Gris Slim", img: "8.jpg" },
+            { ref: "COST-009", name: "Costume Brun Slim", img: "9.jpg" },
+            { ref: "COST-010", name: "Costume Blanc Slim", img: "10.jpg" },
+            { ref: "COST-011", name: "Costume Noir Large", img: "11.jpg" },
+            { ref: "COST-012", name: "Costume Bleu Large", img: "12.jpg" },
+            { ref: "COST-013", name: "Costume Gris Large", img: "13.jpg" },
+            { ref: "COST-014", name: "Costume Brun Large", img: "14.jpg" },
+            { ref: "COST-015", name: "Costume Blanc Large", img: "15.jpg" },
+            { ref: "COST-016", name: "Costume Noir Court", img: "16.jpg" },
+            { ref: "COST-017", name: "Costume Bleu Court", img: "17.jpg" },
+            { ref: "COST-018", name: "Costume Gris Court", img: "18.jpg" },
+            { ref: "COST-019", name: "Costume Brun Court", img: "19.jpg" },
+            { ref: "COST-020", name: "Costume Blanc Court", img: "20.jpg" },
+            { ref: "COST-021", name: "Costume Noir Long", img: "21.jpg" },
+            { ref: "COST-022", name: "Costume Bleu Long", img: "22.jpg" },
+            { ref: "COST-023", name: "Costume Gris Long", img: "23.jpg" },
+            { ref: "COST-024", name: "Costume Brun Long", img: "24.jpg" },
+            { ref: "COST-025", name: "Costume Blanc Long", img: "25.jpg" },
+            { ref: "COST-026", name: "Costume Noir Double", img: "26.jpg" },
+            { ref: "COST-027", name: "Costume Bleu Double", img: "27.jpg" },
+            { ref: "COST-028", name: "Costume Gris Double", img: "28.jpg" },
+            { ref: "COST-029", name: "Costume Brun Double", img: "29.jpg" },
+            { ref: "COST-030", name: "Costume Blanc Double", img: "30.jpg" },
+            { ref: "COST-031", name: "Costume Noir Simple", img: "31.jpg" },
+            { ref: "COST-032", name: "Costume Bleu Simple", img: "32.jpg" },
+            { ref: "COST-033", name: "Costume Gris Simple", img: "33.jpg" },
+            { ref: "COST-034", name: "Costume Brun Simple", img: "34.jpg" },
+            { ref: "COST-035", name: "Costume Blanc Simple", img: "35.jpg" },
+            { ref: "COST-036", name: "Costume Noir Luxe", img: "36.jpg" },
+            { ref: "COST-037", name: "Costume Bleu Luxe", img: "37.jpg" },
+            { ref: "COST-038", name: "Costume Gris Luxe", img: "38.jpg" },
+            { ref: "COST-039", name: "Costume Brun Luxe", img: "39.jpg" },
+            { ref: "COST-040", name: "Costume Blanc Luxe", img: "40.jpg" },
+            { ref: "COST-041", name: "Costume Noir Basique", img: "41.jpg" },
+            { ref: "COST-042", name: "Costume Bleu Basique", img: "42.jpg" },
+            { ref: "COST-043", name: "Costume Gris Basique", img: "43.jpg" },
+            { ref: "COST-044", name: "Costume Brun Basique", img: "44.jpg" }
+        ];
+
+        // Fonction pour vérifier le mot de passe
+        function checkPassword() {
+            const enteredPassword = prompt("Entrez le mot de passe pour accéder au panel vente :");
+            if (enteredPassword === PASSWORD) {
+                // Afficher le catalogue
+                document.getElementById('catalogue').style.display = 'block';
+                generateCatalogue();
+            } else {
+                // Afficher le message d'accès refusé
+                document.getElementById('access-denied').style.display = 'block';
+            }
+        }
+
+        // Fonction pour générer le catalogue
+        function generateCatalogue() {
+            const grid = document.getElementById('product-grid');
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'prodCard';
+
+                const img = document.createElement('img');
+                img.src = `../images/articles/${product.img}`;
+                img.alt = product.name;
+
+                const title = document.createElement('h3');
+                title.textContent = product.name;
+
+                const ref = document.createElement('p');
+                ref.textContent = `Référence : ${product.ref}`;
+
+                card.appendChild(img);
+                card.appendChild(title);
+                card.appendChild(ref);
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Appeler la vérification au chargement de la page
+        window.onload = checkPassword;
+    </script>
+</body>
+</html>
